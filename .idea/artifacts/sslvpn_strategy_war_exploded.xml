@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="sslvpn_strategy:war exploded">
+    <output-path>E:/fartec/ichange/sslvpn_sign_encrypt/tomcat/webapps/ROOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="sslvpn_strategy" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="shared" />
+          <element id="library" level="project" name="sslvpn_strategy" />
+          <element id="library" level="project" name="snmp" />
+          <element id="library" level="project" name="ssh2" />
+          <element id="library" level="project" name="syslog4j-0.9.46" />
+          <element id="library" level="project" name="commons-exec" />
+          <element id="library" level="project" name="json-smart-1.2" />
+          <element id="library" level="project" name="commons-compress-1.8.1" />
+          <element id="library" level="project" name="ant" />
+          <element id="library" level="project" name="bcprov-jdk16-146" />
+          <element id="library" level="project" name="mina-core-2.0.7" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="sslvpn_strategy/web/appserver" />
+    </root>
+  </artifact>
+</component>
