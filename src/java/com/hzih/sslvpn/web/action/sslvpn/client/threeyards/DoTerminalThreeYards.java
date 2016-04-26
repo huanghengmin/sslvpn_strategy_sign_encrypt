@@ -167,6 +167,14 @@ public class DoTerminalThreeYards extends HttpServlet {
                             writer.close();
                             return;
                         }
+                    }else{
+                        msg = "服务器未找到对应用户.";
+                        json = "{\"success\":true,\"msg\":\"" + msg +"\"}";
+                        logger.info("客户端序列号："+serial+",终端编号:"+terminalId+",电话卡编号："+simId+","+msg+",时间:"+new Date());
+                        writer.write(json);
+                        writer.flush();
+                        writer.close();
+                        return;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -179,6 +187,14 @@ public class DoTerminalThreeYards extends HttpServlet {
                     return;
                 }
             }
+        }else {
+            msg = "校验参数错误.";
+            json = "{\"success\":true,\"msg\":\"" + msg +"\"}";
+            logger.info("客户端序列号："+serial+",终端编号:"+terminalId+",电话卡编号："+simId+","+msg+",时间:"+new Date());
+            writer.write(json);
+            writer.flush();
+            writer.close();
+            return;
         }
     }
 }
