@@ -95,6 +95,48 @@ public class UpgradeVersionAction extends ActionSupport {
                         }
                     }
                 }
+            }else if (os.equals("linuxMobile")) {
+                String win32_version = StringContext.systemPath + "/client/linux/linuxMobile" + "/version.xml";
+                File win32_info = new File(win32_version);
+                if (win32_info.exists()) {
+                    Version v = VersionUtils.readInfo(win32_info);
+                    if (v != null) {
+                        String vs = v.getVersion();
+                        int diff = VersionUtils.compareVersion(vs, version);
+                        if (diff>0) {
+                            long length = 0 ;
+                            File file = new File(StringContext.systemPath + "/client/linux/linuxMobile" + "/" + v.getName());
+                            if(file.exists())
+                                length = file.length();
+                            //需要更新
+                            msg = "检测到新版本,是否更新?";
+                            json = "{\"name\":\"" + v.getName() + "\",\"length\":"+String.valueOf(length)+",\"version\":\""+v.getVersion()+"\",\"flag\":true}";
+                        } else {
+                            json = "{\"name\":\"\",\"length\":0,\"version\":\"\",\"flag\":false}";
+                        }
+                    }
+                }
+            }else if (os.equals("linuxCz")) {
+                String win32_version = StringContext.systemPath + "/client/linux/linuxCz" + "/version.xml";
+                File win32_info = new File(win32_version);
+                if (win32_info.exists()) {
+                    Version v = VersionUtils.readInfo(win32_info);
+                    if (v != null) {
+                        String vs = v.getVersion();
+                        int diff = VersionUtils.compareVersion(vs, version);
+                        if (diff>0) {
+                            long length = 0 ;
+                            File file = new File(StringContext.systemPath + "/client/linux/linuxCz" + "/" + v.getName());
+                            if(file.exists())
+                                length = file.length();
+                            //需要更新
+                            msg = "检测到新版本,是否更新?";
+                            json = "{\"name\":\"" + v.getName() + "\",\"length\":"+String.valueOf(length)+",\"version\":\""+v.getVersion()+"\",\"flag\":true}";
+                        } else {
+                            json = "{\"name\":\"\",\"length\":0,\"version\":\"\",\"flag\":false}";
+                        }
+                    }
+                }
             }
         }
         PrintWriter writer = response.getWriter();
@@ -145,6 +187,26 @@ public class UpgradeVersionAction extends ActionSupport {
                     }
                 }
                 path = StringContext.systemPath + "/client/windows/x64" + "/" + name;
+            }else if (os.equals("linuxMobile")) {
+                String windows_version = StringContext.systemPath + "/client/linux/linuxMobile" + "/version.xml";
+                File windows_info = new File(windows_version);
+                if (windows_info.exists()) {
+                    Version v = VersionUtils.readInfo(windows_info);
+                    if (v != null) {
+                        name = v.getName();
+                    }
+                }
+                path = StringContext.systemPath + "/client/linux/linuxMobile" + "/" + name;
+            }else if (os.equals("linuxCz")) {
+                String windows_version = StringContext.systemPath + "/client/linux/linuxCz" + "/version.xml";
+                File windows_info = new File(windows_version);
+                if (windows_info.exists()) {
+                    Version v = VersionUtils.readInfo(windows_info);
+                    if (v != null) {
+                        name = v.getName();
+                    }
+                }
+                path = StringContext.systemPath + "/client/linux/linuxCz" + "/" + name;
             }
             File source = new File(path);
             if (source.exists()) {
