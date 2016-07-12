@@ -60,6 +60,7 @@ public class DoTermAll extends HttpServlet {
 
 
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("content-type", "text/html;charset=utf-8");
